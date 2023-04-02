@@ -49,7 +49,7 @@ async function main() {
         // const result = await contract.evaluateTransaction('FabCar:queryAllCars');
         const result2 = await contract2.evaluateTransaction('User:queryAllStudents');
 
-        console.log(`Car Transaction has been evaluated, result is: ${result.toString()}`);
+        // console.log(`Car Transaction has been evaluated, result is: ${result.toString()}`);
         console.log(`Student Transaction has been evaluated, result is: ${result2.toString()}`);
 
         // Disconnect from the gateway.

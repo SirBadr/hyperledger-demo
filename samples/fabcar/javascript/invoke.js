@@ -19,11 +19,11 @@ async function main() {
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = await Wallets.newFileSystemWallet(walletPath);
-        console.log(`Wallet path: ${walletPath}`);
+        // console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
         const identity = await wallet.get('appUser');
-        console.log("identity ", identity);
+        // console.log("identity ", identity);
         if (!identity) {
             console.log('An identity for the user "appUser" does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
@@ -36,18 +36,18 @@ async function main() {
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
-        console.log("network: ", network);
+        // console.log("network: ", network);
 
         // Get the contract from the network.
         // const contract = network.getContract('fabcar');
         const contract2 = network.getContract('user');
-        console.log("contract: ", contract)
+        // console.log("contract: ", contract)
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
         // await contract.submitTransaction('FabCar:createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
-        await contract2.submitTransaction('User:createStudent', 'Mai', "7-9-1999", "klndfn2(!@");
+        await contract2.submitTransaction('User:createStudent', 'Mai', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

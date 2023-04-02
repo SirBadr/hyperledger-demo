@@ -18,7 +18,9 @@ class User extends Contract {
                 User_Name:"Mahmoud",
                 Created_at: "12993989",
                 DoB: "09-01-1999", // day - month - year
-                Password: "Sdmwmi1o93@)#"
+                Password: "Sdmwmi1o93@)#",
+                //TODO: add encoded voice data property
+                encodedData: ""
             },
         ];
 
@@ -40,57 +42,66 @@ class User extends Contract {
         return studentAsBytes.toString();
     }
 
-    async createStudent(ctx, name, DoB, Password) {
+    async createStudent(ctx, name, createdAt, DoB, Password, encodedData) {
         console.info('============= START : Create Student ===========');
         let useridAsBytes = await ctx.stub.getState("User_Id");
         useridAsBytes = useridAsBytes.toString();
-        console.log("useridAsBytes", useridAsBytes);
+        let userIdAsInt = parseInt(useridAsBytes)+1;
 
         const student = {
-            User_id: '1',
+            User_id: userIdAsInt,
             User_Type_Id: 0,
             User_Name: name,
-            Created_at: Date.now(),
+            Created_at: createdAt,
             DoB: DoB, // day - month - year
-            Password: Password
+            Password: Password,
+            encodedData: encodedData
         };
 
-        await ctx.stub.putState('User' + '1', Buffer.from(JSON.stringify(student)));
-        await ctx.stub.putState('User_Id', Buffer.from('1'));
+        await ctx.stub.putState('User' + userIdAsInt.toString(), Buffer.from(JSON.stringify(student)));
+        await ctx.stub.putState('User_Id', Buffer.from(userIdAsInt.toString()));
         console.info('============= END : Create Student ===========');
     }
     
-    async createDoctor(ctx, name, DoB, Password) {
+    async createDoctor(ctx, name, createdAt, DoB, Password) {
         console.info('============= START : Create Doctor ===========');
+        let useridAsBytes = await ctx.stub.getState("User_Id");
+        useridAsBytes = useridAsBytes.toString();
+        let userIdAsInt = parseInt(useridAsBytes)+1;
 
         const student = {
-            User_id: '2',
+            User_id: userIdAsInt,
             User_Type_Id: 2,
             User_Name: name,
-            Created_at: Date.now(),
+            Created_at: createdAt,
             DoB: DoB, // day - month - year
-            Password: Password
+            Password: Password,
+            encodedData: encodedData
         };
 
-        await ctx.stub.putState('User' + '2', Buffer.from(JSON.stringify(student)));
-        await ctx.stub.putState('User_Id', Buffer.from('2'));
+        await ctx.stub.putState('User' + userIdAsInt.toString(), Buffer.from(JSON.stringify(student)));
+        await ctx.stub.putState('User_Id', Buffer.from(userIdAsInt.toString()));
         console.info('============= END : Create Doctor ===========');
     }
 
-    async createPoT(ctx, name, DoB, Password) {
+    async createPoT(ctx, name, createdAt, DoB, Password) {
         console.info('============= START : Create Person Of Trust ===========');
+        let useridAsBytes = await ctx.stub.getState("User_Id");
+        useridAsBytes = useridAsBytes.toString();
+        let userIdAsInt = parseInt(useridAsBytes)+1;
 
         const student = {
-            User_id: '3',
+            User_id: userIdAsInt,
             User_Type_Id: 1,
             User_Name: name,
-            Created_at: Date.now(),
+            Created_at: createdAt,
             DoB: DoB, // day - month - year
-            Password: Password
+            Password: Password,
+            encodedData: encodedData
         };
 
-        await ctx.stub.putState('User' + '3', Buffer.from(JSON.stringify(student)));
-        await ctx.stub.putState('User_Id', Buffer.from('3'));
+        await ctx.stub.putState('User' + userIdAsInt.toString(), Buffer.from(JSON.stringify(student)));
+        await ctx.stub.putState('User_Id', Buffer.from(userIdAsInt.toString()));
         console.info('============= END : Create Person Of Trust ===========');
     }
 
