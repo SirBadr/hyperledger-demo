@@ -39,15 +39,15 @@ async function main() {
         console.log("network: ", network);
 
         // Get the contract from the network.
-        const contract = network.getContract('fabcar');
-        const contract2 = network.getContract('fabcar2');
+        // const contract = network.getContract('fabcar');
+        const contract2 = network.getContract('user');
         console.log("contract: ", contract)
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
-        await contract2.submitTransaction('FabCar2:createStudent', 'STUDENT2', 'MAI', 23, 'Engineer');
+        // await contract.submitTransaction('FabCar:createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+        await contract2.submitTransaction('User:createStudent', 'Mai', "7-9-1999", "klndfn2(!@");
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

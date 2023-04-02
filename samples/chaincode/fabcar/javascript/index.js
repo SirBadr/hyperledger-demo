@@ -6,9 +6,9 @@
 
 'use strict';
 
-const FabCar = require('./lib/fabcar');
-const FabCar2 = require('./lib/fabcar2');
+// const FabCar = require('./lib/fabcar');
+const User = require('./lib/user');
 
-module.exports.FabCar2 = FabCar2;
-module.exports.FabCar = FabCar;
-module.exports.contracts = [ FabCar, FabCar2 ];
+module.exports.User = User;
+// module.exports.FabCar = FabCar;
+module.exports.contracts = [ User ];

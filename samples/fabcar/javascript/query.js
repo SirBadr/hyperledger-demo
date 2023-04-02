@@ -38,16 +38,16 @@ async function main() {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('fabcar');
+        // const contract = network.getContract('fabcar');
         // console.log("contract 1", contract)
-        const contract2 = network.getContract('fabcar2');
+        const contract2 = network.getContract('user');
         // console.log("contract 2", contract2)
 
         // Evaluate the specified transaction.
         // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
         // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
-        const result = await contract.evaluateTransaction('FabCar:queryAllCars');
-        const result2 = await contract2.evaluateTransaction('FabCar2:queryAllStudents');
+        // const result = await contract.evaluateTransaction('FabCar:queryAllCars');
+        const result2 = await contract2.evaluateTransaction('User:queryAllStudents');
 
         console.log(`Car Transaction has been evaluated, result is: ${result.toString()}`);
         console.log(`Student Transaction has been evaluated, result is: ${result2.toString()}`);
