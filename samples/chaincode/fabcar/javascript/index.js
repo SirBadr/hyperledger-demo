@@ -10,5 +10,6 @@
 const User = require('./lib/user');
 
 module.exports.User = User;
+module.exports.HealthRecord = HealthRecord;
 // module.exports.FabCar = FabCar;
-module.exports.contracts = [ User ];
+module.exports.contracts = [ User, HealthRecord ];
