@@ -36,18 +36,24 @@ async function main() {
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
-        // console.log("network: ", network);
 
         // Get the contract from the network.
-        // const contract = network.getContract('fabcar');
-        const contract2 = network.getContract('user');
-        // console.log("contract: ", contract)
+        // const contract2 = network.getContract('user');
+        // Get health records contract
+        const contract_health_record = network.getContract('healthRecord');
 
         // Submit the specified transaction.
-        // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-        // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        // await contract.submitTransaction('FabCar:createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
-        await contract2.submitTransaction('User:createStudent', 'Mai', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
+        // await contract2.submitTransaction('User:createStudent', 'Ehab', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
+        await contract_health_record.submitTransaction('HealthRecord:createHealthRecord',
+            '2',
+            '08-05-2023',
+            '2',
+            2,
+            "comment3",
+            2,
+            "desc3",
+            "plan3"
+        );
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
