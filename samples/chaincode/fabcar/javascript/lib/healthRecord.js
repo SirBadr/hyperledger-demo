@@ -78,3 +78,5 @@ class HealthRecord extends Contract {
         return JSON.stringify(allResults);
     }
 }
+
+module.exports = HealthRecord;

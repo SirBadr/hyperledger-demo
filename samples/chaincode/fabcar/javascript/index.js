@@ -8,6 +8,7 @@
 
 // const FabCar = require('./lib/fabcar');
 const User = require('./lib/user');
+const HealthRecord = require('./lib/healthRecord');
 
 module.exports.User = User;
 module.exports.HealthRecord = HealthRecord;
