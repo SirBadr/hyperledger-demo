@@ -8,6 +8,7 @@ class HealthRecord extends Contract {
         console.info('============= START : Initialize Ledger ===========');
         const health_records = [ // create dummyy initial data
             {
+                record_id: '0',
                 source_user: '1',
                 creation_date: '08-05-2023',
                 dest_user: '2',
@@ -21,20 +22,30 @@ class HealthRecord extends Contract {
 
         for (let i = 0; i < health_records.length; i++) { // insert data in states.
             health_records[i].docType = 'healthRecord';
-            await ctx.stub.putState('record_id', Buffer.from('0'));
-            await ctx.stub.putState('record' + '0', Buffer.from(JSON.stringify(students[i])));
+            await ctx.stub.putState('record_Id', Buffer.from('0'));
+            await ctx.stub.putState('record' + '0', Buffer.from(JSON.stringify(health_records[i])));
             console.info('Added <--> ', health_records[i]);
         }
         console.info('============= END : Initialize Ledger ===========');
     }
 
+    async queryHealthRecord(ctx, recordKey) { // "record"+record_id
+        const recordAsBytes = await ctx.stub.getState(recordKey); // get the car from chaincode state
+        if (!recordAsBytes || recordAsBytes.length === 0) {
+            throw new Error(`${recordAsBytes} does not exist`);
+        }
+        console.log(recordAsBytes.toString());
+        return recordAsBytes.toString();
+    }
+
     async createHealthRecord(ctx, source_user, creation_date, dest_user, report_type, report_comment, test_id, treatment_planDesc, treatment_planning) {
         console.info('============= START : Create Health Record ===========');
-        let recordIdAsBytes = await ctx.stub.getState("record_id");
+        let recordIdAsBytes = await ctx.stub.getState("record_Id");
         recordIdAsBytes = recordIdAsBytes.toString();
         let recordIdAsInt = parseInt(recordIdAsBytes)+1;
 
         const healthRecord = {
+            record_id: recordIdAsInt,
             source_user: source_user,
             creation_date: creation_date,
             dest_user: dest_user,
@@ -46,17 +57,8 @@ class HealthRecord extends Contract {
         };
 
         await ctx.stub.putState('record' + recordIdAsInt.toString(), Buffer.from(JSON.stringify(healthRecord)));
-        await ctx.stub.putState('record_id', Buffer.from(recordIdAsInt.toString()));
+        await ctx.stub.putState('record_Id', Buffer.from(recordIdAsInt.toString()));
         console.info('============= END : Create Health Record ===========');
-    }
-
-    async queryHealthRecord(ctx, recordNumber) { // "User"+user_id
-        const recordAsBytes = await ctx.stub.getState(recordNumber); // get the car from chaincode state
-        if (!recordAsBytes || recordAsBytes.length === 0) {
-            throw new Error(`${recordAsBytes} does not exist`);
-        }
-        console.log(recordAsBytes.toString());
-        return recordAsBytes.toString();
     }
 
     async queryAllHealthRecords(ctx) {

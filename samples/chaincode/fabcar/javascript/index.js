@@ -13,4 +13,4 @@ const HealthRecord = require('./lib/healthRecord');
 module.exports.User = User;
 module.exports.HealthRecord = HealthRecord;
 // module.exports.FabCar = FabCar;
-module.exports.contracts = [ User, HealthRecord ];
+module.exports.contracts = [ HealthRecord, User ];

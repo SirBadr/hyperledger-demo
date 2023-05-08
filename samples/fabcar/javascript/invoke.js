@@ -38,10 +38,22 @@ async function main() {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract2 = network.getContract('user');
+        // const contract2 = network.getContract('user');
+        // Get health records contract
+        const contract_health_record = network.getContract('healthRecord');
 
         // Submit the specified transaction.
-        await contract2.submitTransaction('User:createStudent', 'Mai', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
+        // await contract2.submitTransaction('User:createStudent', 'Ehab', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
+        await contract_health_record.submitTransaction('HealthRecord:createHealthRecord',
+            '2',
+            '08-05-2023',
+            '2',
+            2,
+            "comment3",
+            2,
+            "desc3",
+            "plan3"
+        );
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
