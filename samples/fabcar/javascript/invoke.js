@@ -40,20 +40,24 @@ async function main() {
         // Get the contract from the network.
         // const contract2 = network.getContract('user');
         // Get health records contract
-        const contract_health_record = network.getContract('healthRecord');
+        // const contract_health_record = network.getContract('healthRecord');
+        const erc721_contract = network.getContract('tokenERC721');
 
         // Submit the specified transaction.
         // await contract2.submitTransaction('User:createStudent', 'Ehab', Date.now(), "09-07-1999", "klndfn2(!@", "encoded");
-        await contract_health_record.submitTransaction('HealthRecord:createHealthRecord',
-            '2',
-            '08-05-2023',
-            '2',
-            2,
-            "comment3",
-            2,
-            "desc3",
-            "plan3"
-        );
+        // await contract_health_record.submitTransaction('HealthRecord:createHealthRecord',
+        //     '2',
+        //     '08-05-2023',
+        //     '2',
+        //     2,
+        //     "comment3",
+        //     2,
+        //     "desc3",
+        //     "plan3"
+        // );
+        // initialize nft contract
+        // await erc721_contract.submitTransaction('TokenERC721Contract:Initialize', 'AUTISM TOKEN', 'ASTT');
+        await erc721_contract.submitTransaction('TokenERC721Contract:MintWithTokenURI', '2', 'str');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
