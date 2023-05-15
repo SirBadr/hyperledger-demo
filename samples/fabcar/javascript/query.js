@@ -44,15 +44,15 @@ async function main() {
         // console.log(contract2);
         // Get health records contract
 
-        let contract_health_record = network.getContract('healthRecord');
+        let tokenERC721 = network.getContract('tokenERC721');
         // console.log("contract contract_health_record", contract_health_record)
 
         // Evaluate the specified transaction.
         // const result2 = await contract2.evaluateTransaction('User:queryAllStudents');
         
         // Get all records
-        const result_health_record = await contract_health_record.evaluateTransaction('HealthRecord:queryAllHealthRecords');
-        console.log(`Car Transaction has been evaluated, result is: ${result_health_record.toString()}`);
+        // const result_health_record = await tokenERC721.evaluateTransaction('TokenERC721Contract:queryAllHealthRecords');
+        // console.log(`Car Transaction has been evaluated, result is: ${result_health_record.toString()}`);
         
         
         // console.log(`Health Record Transaction has been evaluated, result is: ${result_health_record}`);
