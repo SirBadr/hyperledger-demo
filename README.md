@@ -36,6 +36,16 @@ npm install --global grpc
 # Installation references
 1. https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html
 
+# Important files.
+1. all chaincodes: "/samples/chaincode/fabcar/javascript/lib"
+2. file to invoke a deployed chaincode: "/samples/fabcar/javascript/invoke.js"
+3. file to query from a deployed chaincode: "/samples/fabcar/javascript/query.js"
+4. file to enroll admin to a running network: "/samples/fabcar/javascript/enrollAdmin.js"
+5. file to enroll user to a running network: "/samples/fabcar/javascript/registerUser.js"
+6. bash file to start the network and deploy chaincodes: "samples/fabcar/startFabric.js"
+7. bash file to stop a running network: "samples/fabcar/networkDown.sh"
+
+# SCENARIOS
 # hyperledger-demo to run fabcar javascript demo code
 1. navigate to repository.
 2. $ cd fabcar
@@ -46,3 +56,12 @@ npm install --global grpc
 7. $ node query.js
 8. $ node invoke.js
 9. $ node query.js
+
+# to deploy a new contract
+1. cd samples/chaincode/fabcar/javascript/lib.
+2. create a new file with the name of your chaincode.
+3. implement your logic in the above file.
+4. cd ..
+5. open ./index.js file and import your chaincode class.
+6. add your imported contract to "module.export ... ".
+7. refer to the previous scenario for deploying it and running the network.
