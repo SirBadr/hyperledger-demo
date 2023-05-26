@@ -57,7 +57,7 @@ async function main() {
         // );
         // initialize nft contract
         // await erc721_contract.submitTransaction('TokenERC721Contract:Initialize', 'AUTISM TOKEN', 'ASTT');
-        await erc721_contract.submitTransaction('TokenERC721Contract:MintWithTokenURI', '2', 'str');
+        await erc721_contract.submitTransaction('TokenERC721Contract:MintWithTokenURI', '3', 'metadata dummy link');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

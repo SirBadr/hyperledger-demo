@@ -16,4 +16,5 @@ const TokenERC721Contract = require('./lib/tokenERC721');
 module.exports.TokenERC721Contract = TokenERC721Contract;
 // module.exports.FabCar = FabCar;
 module.exports.contracts = [ TokenERC721Contract ];
-// module.exports.contracts = [ TokenERC721Contract, HealthRecord, User ];
+// module.exports.contracts = [ HealthRecord ];
+// module.exports.contracts = [ HealthRecord, User ];
